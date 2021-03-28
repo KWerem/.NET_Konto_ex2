@@ -9,7 +9,7 @@ namespace Konto
         private String _Login;
         private String _Password;
         private bool logged;
-        private double saldo = 1275;
+        private double saldo = -800;
 
         public Account(String user, String num, String log, String pass)
         {
@@ -48,9 +48,12 @@ namespace Konto
         {
             if (logged == true)
             {
-                saldo = saldo - wyplata;
+                if (saldo > 0)
+                {
+                    saldo = saldo - wyplata;
 
-                Console.WriteLine("\nWypłacono: " + wyplata + "\nStan konta: " + saldo);
+                    Console.WriteLine("\nWypłacono: " + wyplata + "\nStan konta: " + saldo);
+                } else { Console.WriteLine("\nBrak środków na koncie!!"); }
             }
             else { Console.WriteLine("\nUzytkownik niezalogowany!"); }
             return saldo;
